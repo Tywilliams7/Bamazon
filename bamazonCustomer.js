@@ -41,7 +41,7 @@ function afterConnection() {
     ])
     .then(function (answers) {
 
-      var userId = parseInt(answers.ID) - 1;
+      var userId = parseInt(answers.ID);
       var userQuantity = parseInt(answers.Quantity);
       checkID(userId);
       
@@ -49,7 +49,7 @@ function afterConnection() {
       function checkID(pID) {
         if (pID <= length && pID > 0) {
           console.log("Processing your order....");
-          console.log("There are " + res[userId].stock_quantity + " " + res[userId].product_name + " in stock");
+          console.log("There are " + res[userId-1].stock_quantity + " " + res[userId-1].product_name + " in stock");
           checkQuan(userId, userQuantity);
         } else {
           console.log("Enter a valid ID please.");
@@ -58,10 +58,10 @@ function afterConnection() {
       };
       
       function checkQuan(pID, pQuantity) {
-        var total = res[userId].price * userQuantity;
+        var total = res[userId-1].price * userQuantity;
 
         if (pQuantity <= res[pID].stock_quantity) {
-          console.log("You choose to buy " + userQuantity + " " + res[userId].product_name + "'s.");
+          console.log("You choose to buy " + userQuantity + " " + res[userId-1].product_name + "'s.");
           stockUpdate();
           console.log("Your total will be $" + total + ".");
         } else {
@@ -72,8 +72,8 @@ function afterConnection() {
       function stockUpdate(){
         connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
-        var newQuantity = res[userId].stock_quantity - userQuantity;
-        connection.query(
+        var newQuantity = res[userId-1].stock_quantity - userQuantity;
+        var test = connection.query(
           "UPDATE products SET ? WHERE ?",
           [
             {
@@ -87,11 +87,12 @@ function afterConnection() {
             if (error) throw err;
             console.log("Order placed successfully!");
             console.log(newQuantity);
-            console.log(res[userId].stock_quantity);
+            console.log(res[userId-1].stock_quantity);
             connection.end();
    
           }
         );
+
         })
       }
     });
