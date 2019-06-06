@@ -87,6 +87,7 @@ function afterConnection() {
             if (error) throw err;
             console.log("Order placed successfully!");
             console.log(newQuantity);
+            console.log(res[userId].stock_quantity);
             connection.end();
    
           }

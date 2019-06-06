@@ -35,6 +35,7 @@ function afterConnection() {
             if (answers.pick === "Yes") {
                 afterConnection();
             } else {
+                console.log("Logged Out of Bamazon Manager.")
                 connection.end();
             }
         })
@@ -43,7 +44,7 @@ function afterConnection() {
         {
             type: "list",
             message: "Welcome to Bamazon Manager!",
-            choices: ["View Inventory", "View Low Inventory", "Add to Inventory", "Add New Product"],
+            choices: ["View Inventory", "View Low Inventory", "Add to Inventory", "Add New Product", "Discontinue Product"],
             name: "pick",
         },
         
@@ -56,6 +57,8 @@ function afterConnection() {
         } else if (answers.pick === "Add to Inventory"){
             AddStock();
 
+        } else if (answers.pick === "Discontinue Product"){
+            deleteItem();
         } else {
             newItem();
         }
@@ -189,11 +192,32 @@ function afterConnection() {
             );
           });
       }
+    function deleteItem(){
+        inquirer.prompt([
+            {
+                name: "ID",
+                message: "What is the ID of the product you would like to delete?"
+            }
+        ])
+            .then(function (answer) {
+            let userId = answer.ID
+            connection.query("SELECT * FROM products", function (err, res) {
+                if (err) throw err;
+                connection.query(
+                    "DELETE FROM `products` WHERE ?",
+                    [
+                        {
+                            item_id: userId
+                        }
+                    ],
+                    function (error) {
+                        if (error) throw err;
+                        console.log("Item Successfully Deleted!");
+                        questions();
+                    }
+                    );
+                })
+            })
+    }
 })
 }
-
-
-
-
-
-
