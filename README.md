@@ -1,30 +1,41 @@
 # Bamazon
-Challenge #1: Customer View (Minimum Requirement)
+```
+## Description
+This application implements a simple command line based storefront using the npm inquirer package and the MySQL database backend together with the npm mysql package. The application presents two interfaces: customer and manager.
 
-This means updating the SQL database to reflect the remaining quantity.
-Once the update goes through, show the customer the total cost of their purchase.
-If this activity took you between 8-10 hours, then you've put enough time into this assignment.
+### MySQL Database Setup
+In order to run this application, you should have the MySQL database already set up on your machine. If you don't, visit the MySQL installation page to install the version you need for your operating system. Once you have MySQL isntalled, you will be able to create the Bamazon database and the products table with the SQL code found in Bamazon.sql. Run this code inside your MySQL client like Sequel Pro to populate the database, then you will be ready to proceed with running the Bamazon customer and manager interfaces.
 
- <!-- Feel free to stop here -- unless you want to take on the next challenge.
-Challenge #2: Manager View (Next Level)
-Create a new Node application called bamazonManager.js. Running this application will: -->
+### Customer Interface
+The customer interface allows the user to view the current inventory of store items: item IDs, descriptions, department in which the item is located and price. The user is then able to purchase one of the existing items by entering the item ID and the desired quantity. If the selected quantity is currently in stock, the user's order is fulfilled, displaying the total purchase price and updating the store database. If the desired quantity is not available, the user is prompted to modify their order.
 
-List a set of menu options:
+To run the customer interface please follow the steps below:
 
-View Products for Sale
+git clone git@github.com:angrbrd/bamazon.git
+cd bamazon
+npm install
+node bamazonCustomer.js
+````
+![customer](./images/customer.jpg)
+````
+### Manager Interace
+The manager interface presents a list of five options, as below.
+````
+![manger](./images/manager.jpg)
+````
+The View Products for Sale option allows the user to view the current inventory of store items: item IDs, descriptions, department in which the item is located, price, and the quantity available in stock.
 
-View Low Inventory
+The View Low Inventory option shows the user the items which currently have fewer than 100 units available.
 
-Add to Inventory
+The Add to Inventory option allows the user to select a given item ID and add additional inventory to the target item.
 
-Add New Product
+The Add New Product option allows the user to enter details about a new product which will be entered into the database upon completion of the form.
 
-If a manager selects View Products for Sale, the app should list every available item: the item IDs, names, prices, and quantities.
+The Discontinue Product option allows the user to delete a product from the inventory provided the ID of it will delete it from the database upon completion.
 
-If a manager selects View Low Inventory, then it should list all items with an inventory count lower than five.
+To run the manager interface please follow the steps below:
 
-If a manager selects Add to Inventory, your app should display a prompt that will let the manager "add more" of any item currently in the store.
-
-If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
-
-If you finished Challenge #2 and put in all the hours you were willing to spend on this activity, then rest easy! Otherwise continue to the next and final challenge.
+git clone git@github.com:angrbrd/bamazon.git
+cd bamazon
+npm install
+node bamazonManager.js
