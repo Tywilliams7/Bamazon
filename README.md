@@ -9,11 +9,12 @@ In order to run this application, you should have the MySQL database already set
 The customer interface allows the user to view the current inventory of store items: item IDs, descriptions, department in which the item is located and price. The user is then able to purchase one of the existing items by entering the item ID and the desired quantity. If the selected quantity is currently in stock, the user's order is fulfilled, displaying the total purchase price and updating the store database. If the desired quantity is not available, the user is prompted to modify their order.
 
 To run the customer interface please follow the steps below:
-
+```
 git clone git@github.com:angrbrd/bamazon.git
 cd bamazon
 npm install
 node bamazonCustomer.js
+```
 ![customer](./images/customer.jpg)
 
 ### Manager Interace
@@ -32,8 +33,9 @@ The Add New Product option allows the user to enter details about a new product 
 The Discontinue Product option allows the user to delete a product from the inventory provided the ID of it will delete it from the database upon completion.
 
 To run the manager interface please follow the steps below:
-
+```
 git clone git@github.com:angrbrd/bamazon.git
 cd bamazon
 npm install
 node bamazonManager.js
+```
