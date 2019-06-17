@@ -1,5 +1,4 @@
 # Bamazon
-```
 ## Description
 This application implements a simple command line based storefront using the npm inquirer package and the MySQL database backend together with the npm mysql package. The application presents two interfaces: customer and manager.
 
@@ -15,14 +14,13 @@ git clone git@github.com:angrbrd/bamazon.git
 cd bamazon
 npm install
 node bamazonCustomer.js
-````
 ![customer](./images/customer.jpg)
-````
+
 ### Manager Interace
 The manager interface presents a list of five options, as below.
-````
+
 ![manger](./images/manager.jpg)
-````
+
 The View Products for Sale option allows the user to view the current inventory of store items: item IDs, descriptions, department in which the item is located, price, and the quantity available in stock.
 
 The View Low Inventory option shows the user the items which currently have fewer than 100 units available.
