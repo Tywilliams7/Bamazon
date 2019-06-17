@@ -24,13 +24,13 @@ The manager interface presents a list of five options, as below.
 
 The View Products for Sale option allows the user to view the current inventory of store items: item IDs, descriptions, department in which the item is located, price, and the quantity available in stock.
 
-The View Low Inventory option shows the user the items which currently have fewer than 100 units available.
+The **View Low Inventory** option shows the user the items which currently have fewer than 100 units available.
 
-The Add to Inventory option allows the user to select a given item ID and add additional inventory to the target item.
+The **Add to Inventory** option allows the user to select a given item ID and add additional inventory to the target item.
 
-The Add New Product option allows the user to enter details about a new product which will be entered into the database upon completion of the form.
+The **Add New Product** option allows the user to enter details about a new product which will be entered into the database upon completion of the form.
 
-The Discontinue Product option allows the user to delete a product from the inventory provided the ID of it will delete it from the database upon completion.
+The **Discontinue Product** option allows the user to delete a product from the inventory provided the ID of it will delete it from the database upon completion.
 
 To run the manager interface please follow the steps below:
 ```
